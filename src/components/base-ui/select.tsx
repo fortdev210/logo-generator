@@ -16,6 +16,7 @@ interface InputProps {
   className?: string;
   initialValue?: Option;
   optionClassName?: string;
+  fullWidth?: boolean;
 }
 
 const Select = ({
@@ -26,6 +27,7 @@ const Select = ({
   initialValue,
   optionClassName,
   onOptionChange,
+  fullWidth,
 }: InputProps) => {
   const [option, setOption] = useState(initialValue ?? options[0]);
 
@@ -34,7 +36,11 @@ const Select = ({
     onOptionChange(value);
   };
   return (
-    <div className=' relative w-fit space-y-1'>
+    <div
+      className={
+        fullWidth ? "relative w-full space-y-1" : "relative w-fit space-y-1"
+      }
+    >
       <label className='block text-150 text-secondary'>{label}</label>
       <Listbox
         as={"div"}
