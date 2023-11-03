@@ -79,6 +79,13 @@ const config: Config = {
       backdropFilter: {
         custom: "saturate(180%) blur(20px)",
       },
+      screens: {
+        "2xl": { min: "1536px" },
+        xl: { min: "1280px" },
+        lg: { min: "1024px" },
+        md: { min: "768px" },
+        sm: { min: "640px" },
+      },
     },
   },
   plugins: [],

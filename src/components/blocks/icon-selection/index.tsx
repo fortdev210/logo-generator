@@ -6,6 +6,7 @@ import { IHubspotIcon } from "@/utils/types";
 import React, { useEffect, useState } from "react";
 
 import IconCard from "./icon-card";
+import Button from "@/components/base-ui/button";
 
 const styles = {
   base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] pt-[100px] ",
@@ -36,11 +37,14 @@ export default function IconSelection() {
           iconR={<MaterialIcon name='search' size={24} />}
         />
       </div>
-      <div className='w-3/4 grid grid-cols-3 gap-4 mt-10'>
+      <div className='w-3/4 grid grid-cols-3 lg:grid-cols-4 gap-4 mt-10'>
         {icons.map((icon, index) => (
           <IconCard key={index} iconSrc={icon} />
         ))}
       </div>
+      <Button variant='tertiary' className='mt-10 mb-[100px]'>
+        + Load More
+      </Button>
     </div>
   );
 }

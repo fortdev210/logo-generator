@@ -9,7 +9,7 @@ interface IconCardProps {
 }
 
 const styles = {
-  base: "flex items-center justify-center relative rounded-lg bg-white w-full h-full overflow-hidden ",
+  base: "flex items-center justify-center relative rounded-lg bg-white w-full h-full overflow-hidden cursor-pointer ",
 };
 
 export default function IconCard(props: IconCardProps) {
@@ -17,7 +17,7 @@ export default function IconCard(props: IconCardProps) {
 
   return (
     <div className={clsx(styles.base, className)}>
-      <Radio className='absolute right-3 top-3 ' variant='updating' />
+      <input className='absolute right-3 top-3 w-8 h-8 ' type='radio' />
       <Image
         layout='responsive'
         width={200}
