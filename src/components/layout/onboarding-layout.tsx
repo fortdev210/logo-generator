@@ -12,16 +12,32 @@ interface OnboardingLayoutProps {
 export default function OnboardingLayout(props: OnboardingLayoutProps) {
   const { children } = props;
   const router = useRouter();
-  const { currentStep, setCurrentStep, businessInfo, setStepsFinished } =
-    useOnboardingStore();
+  const {
+    currentStep,
+    setCurrentStep,
+    businessInfo,
+    setStepsFinished,
+    selectedIcon,
+  } = useOnboardingStore();
 
   const onNext = () => {
-    if (currentStep === ONBOARDING_STEP_ENUM.BUSINESS_INFO) {
-      if (businessInfo.name && businessInfo.industry) {
-        setCurrentStep(ONBOARDING_STEP_ENUM.ICON);
-        setStepsFinished(ONBOARDING_STEP_ENUM.BUSINESS_INFO, true);
-        router.push("/icon-selection");
-      }
+    switch (currentStep) {
+      case ONBOARDING_STEP_ENUM.BUSINESS_INFO:
+        if (businessInfo.name && businessInfo.industry) {
+          setCurrentStep(ONBOARDING_STEP_ENUM.ICON);
+          setStepsFinished(ONBOARDING_STEP_ENUM.BUSINESS_INFO, true);
+          router.push("/icon-selection");
+        }
+        break;
+      case ONBOARDING_STEP_ENUM.ICON:
+        if (selectedIcon) {
+          setCurrentStep(ONBOARDING_STEP_ENUM.FONT);
+          setStepsFinished(ONBOARDING_STEP_ENUM.ICON, true);
+          router.push("/font-selection");
+        }
+        break;
+      default:
+        break;
     }
   };
 
@@ -29,6 +45,19 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
     if (currentStep === ONBOARDING_STEP_ENUM.ICON) {
       setCurrentStep(ONBOARDING_STEP_ENUM.BUSINESS_INFO);
       router.push("/info");
+    }
+
+    switch (currentStep) {
+      case ONBOARDING_STEP_ENUM.ICON:
+        setCurrentStep(ONBOARDING_STEP_ENUM.BUSINESS_INFO);
+        router.push("/info");
+        break;
+      case ONBOARDING_STEP_ENUM.FONT:
+        setCurrentStep(ONBOARDING_STEP_ENUM.ICON);
+        router.push("/icon-selection");
+        break;
+      default:
+        break;
     }
   };
 

@@ -13,9 +13,9 @@ type OnboardingStateType = {
     industry: string;
     slogan?: string;
   };
-  icon: string;
-  font: string;
-  color: string;
+  selectedIcon: string;
+  selectedFont: string;
+  selectedColor: string;
   currentStep: number;
   stepsFinished: Record<number, boolean>;
 };
@@ -26,9 +26,9 @@ const OnboardingInitialState: OnboardingStateType = {
     industry: "",
     slogan: "",
   },
-  icon: "",
-  font: "",
-  color: "",
+  selectedIcon: "",
+  selectedFont: "",
+  selectedColor: "",
   currentStep: 0,
   stepsFinished: {},
 };
@@ -39,9 +39,9 @@ export const useOnboardingStore = create(
       combine(OnboardingInitialState, (set, get) => ({
         addBusinessInfo: (businessInfo: OnboardingStateType["businessInfo"]) =>
           set({ businessInfo }),
-        addIcon: (icon: string) => set({ icon }),
-        addFont: (font: string) => set({ font }),
-        addColor: (color: string) => set({ color }),
+        addIcon: (selectedIcon: string) => set({ selectedIcon }),
+        addFont: (selectedFont: string) => set({ selectedFont }),
+        addColor: (selectedColor: string) => set({ selectedColor }),
         setCurrentStep: (currentStep: number) => set({ currentStep }),
         setStepsFinished: (step: ONBOARDING_STEP_ENUM, value: boolean) =>
           set({

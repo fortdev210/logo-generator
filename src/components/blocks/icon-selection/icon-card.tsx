@@ -6,6 +6,8 @@ import Radio from "@/components/base-ui/radio";
 interface IconCardProps {
   iconSrc: string;
   className?: string;
+  onSelect: (logo: string) => void;
+  selected?: boolean;
 }
 
 const styles = {
@@ -13,11 +15,19 @@ const styles = {
 };
 
 export default function IconCard(props: IconCardProps) {
-  const { className, iconSrc } = props;
+  const { className, iconSrc, onSelect, selected } = props;
 
   return (
-    <div className={clsx(styles.base, className)}>
-      <input className='absolute right-3 top-3 w-8 h-8 ' type='radio' />
+    <div
+      className={clsx(styles.base, className)}
+      onClick={() => onSelect(iconSrc)}
+    >
+      <input
+        className='absolute right-3 top-3 w-8 h-8 '
+        type='radio'
+        checked={selected}
+        readOnly
+      />
       <Image
         layout='responsive'
         width={200}

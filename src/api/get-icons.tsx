@@ -1,5 +1,4 @@
 import axios from "axios";
-import mockData from "@/utils/mock-data.json";
 import { faker } from "@faker-js/faker";
 
 export const getHubspotIcons = async (
@@ -13,8 +12,11 @@ export const getHubspotIcons = async (
   return res.data;
 };
 
-export const getBusinessLogos = (industry: string) => {
-  const images = Array.from({ length: 12 }, () =>
+export const getBusinessLogos = (industry: string, quantity: number = 12) => {
+  if (!industry) {
+    return;
+  }
+  const images = Array.from({ length: quantity }, () =>
     faker.image.urlLoremFlickr({
       category: "logo",
       width: 200,

@@ -1,10 +1,9 @@
-import { getBusinessLogos, getHubspotIcons } from "@/api/get-icons";
+import { getBusinessLogos } from "@/api/get-icons";
 import Input from "@/components/base-ui/input";
 import { Typography } from "@/components/base-ui/typography";
 import MaterialIcon from "@/components/icons/material-icon";
-import { IHubspotIcon } from "@/utils/types";
 import React, { useEffect, useState } from "react";
-
+import { useOnboardingStore } from "@/store/onboardingStore";
 import IconCard from "./icon-card";
 import Button from "@/components/base-ui/button";
 
@@ -16,10 +15,25 @@ const styles = {
 export default function IconSelection() {
   const [icons, setIcons] = useState<string[]>([]);
 
+  const { selectedIcon, addIcon } = useOnboardingStore();
+
   useEffect(() => {
     const res = getBusinessLogos("restaurants");
-    setIcons(res);
+    if (res) {
+      setIcons(res);
+    }
   }, []);
+
+  const onLoadMore = () => {
+    const res = getBusinessLogos("restaurants");
+    if (res) {
+      setIcons([...icons, ...res]);
+    }
+  };
+
+  const onSelectLogo = (logo: string) => {
+    addIcon(logo);
+  };
 
   return (
     <div className={styles.base}>
@@ -39,10 +53,19 @@ export default function IconSelection() {
       </div>
       <div className='w-3/4 grid grid-cols-3 lg:grid-cols-4 gap-4 mt-10'>
         {icons.map((icon, index) => (
-          <IconCard key={index} iconSrc={icon} />
+          <IconCard
+            key={index}
+            iconSrc={icon}
+            selected={icon === selectedIcon}
+            onSelect={onSelectLogo}
+          />
         ))}
       </div>
-      <Button variant='tertiary' className='mt-10 mb-[100px]'>
+      <Button
+        variant='tertiary'
+        className='mt-10 mb-[100px]'
+        onClick={onLoadMore}
+      >
         + Load More
       </Button>
     </div>
