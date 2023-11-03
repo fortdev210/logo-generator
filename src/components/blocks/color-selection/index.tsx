@@ -12,7 +12,7 @@ export default function ColorSelection() {
 
   return (
     <div className={styles.base}>
-      <div className='max-w-[1200px] xl:max-w-[1000px] m-auto'>
+      <div className='max-w-[1200px] xl:max-w-[1000px] m-auto w-full px-2'>
         <Typography
           variant='h1'
           text='Select Your Business Primary Color'
@@ -23,7 +23,7 @@ export default function ColorSelection() {
           text='Select the color you want to use to represent your business:'
           className='mb-4'
         />
-        <div className='flex gap-10'>
+        <div className='w-full flex gap-10'>
           <ColorSelectionPad />
           <ColorPreview />
         </div>

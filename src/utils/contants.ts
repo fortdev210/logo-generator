@@ -2,6 +2,7 @@ export const STEP_INFO = [
   "Entering key information about your business will allow the tool to generate relevant suggestions for your brand. Entering your industry is mandatory, but adding a slogan is optional (but recommended).",
   "Choosing the right icon is crucial as it will appear in your logo and in many other items of your kit. If you decide to change it, you can always go back.",
   "Picking the right font is crucial to communicate the energy of your brand: do you prefer it more serious and straightforward? Entertaining and fun? Rounded and welcoming?",
+  "Choose a primary color that will be displayed across your assets.",
 ];
 
 export const TOTAL_STEPS = 6;

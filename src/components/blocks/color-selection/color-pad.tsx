@@ -4,8 +4,8 @@ import { useOnboardingStore } from "@/store/onboardingStore";
 import MaterialIcon from "@/components/icons/material-icon";
 
 const styles = {
-  base: "pr-4 h-[650px] overflow-y-scroll ",
-  card: "flex items-center justify-center rounded w-[90px] h-[90px] cursor-pointer  ",
+  base: "pr-4 h-[650px] overflow-y-scroll grid grid-cols-3 xl:grid-cols-4 gap-1 w-full ",
+  card: "flex items-center justify-center rounded w-[90px] h-[90px] cursor-pointer shrink-0 ",
 };
 
 interface ColorSelectionPadProps {
@@ -23,20 +23,18 @@ export default function ColorSelectionPad(props: ColorSelectionPadProps) {
 
   return (
     <div className={clsx(styles.base, className)}>
-      <div className='w-full grid grid-cols-4 gap-2'>
-        {AVALIABLE_COLORS.map((color) => (
-          <div
-            key={color}
-            className={clsx(styles.card, `bg-[${color}]`)}
-            onClick={() => onColorSelect(color)}
-            style={{ backgroundColor: color }}
-          >
-            {selectedColor === color && (
-              <MaterialIcon name='check' className='text-white' />
-            )}
-          </div>
-        ))}
-      </div>
+      {AVALIABLE_COLORS.map((color) => (
+        <div
+          key={color}
+          className={styles.card}
+          onClick={() => onColorSelect(color)}
+          style={{ backgroundColor: color }}
+        >
+          {selectedColor === color && (
+            <MaterialIcon name='check' className='text-white' />
+          )}
+        </div>
+      ))}
     </div>
   );
 }

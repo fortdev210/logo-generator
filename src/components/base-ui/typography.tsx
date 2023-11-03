@@ -30,9 +30,20 @@ export interface TypographyProps {
    * Text content.
    */
   text: string;
+
+  style?: React.CSSProperties;
 }
 
-export const Typography = ({ className, variant, text }: TypographyProps) => {
+export const Typography = ({
+  className,
+  variant,
+  text,
+  style,
+}: TypographyProps) => {
   const classes = clsx(styles.variant[variant], className);
-  return <p className={classes}>{text}</p>;
+  return (
+    <p className={classes} style={style}>
+      {text}
+    </p>
+  );
 };
