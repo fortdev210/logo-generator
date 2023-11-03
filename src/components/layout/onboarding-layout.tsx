@@ -19,6 +19,7 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
     setStepsFinished,
     selectedIcon,
     selectedFont,
+    selectedColor,
   } = useOnboardingStore();
 
   const onNext = () => {
@@ -44,6 +45,12 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
           router.push("/color-selection");
         }
         break;
+      case ONBOARDING_STEP_ENUM.COLOR:
+        if (selectedColor) {
+          setCurrentStep(ONBOARDING_STEP_ENUM.LOGO);
+          setStepsFinished(ONBOARDING_STEP_ENUM.COLOR, true);
+          router.push("/logo-selection");
+        }
       default:
         break;
     }
@@ -67,6 +74,10 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
       case ONBOARDING_STEP_ENUM.COLOR:
         setCurrentStep(ONBOARDING_STEP_ENUM.FONT);
         router.push("/font-selection");
+        break;
+      case ONBOARDING_STEP_ENUM.LOGO:
+        setCurrentStep(ONBOARDING_STEP_ENUM.COLOR);
+        router.push("/color-selection");
         break;
       default:
         break;

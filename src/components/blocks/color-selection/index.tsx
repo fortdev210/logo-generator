@@ -1,5 +1,4 @@
 import { Typography } from "@/components/base-ui/typography";
-import { useOnboardingStore } from "@/store/onboardingStore";
 import ColorSelectionPad from "./color-pad";
 import ColorPreview from "./color-preview";
 
@@ -8,8 +7,6 @@ const styles = {
 };
 
 export default function ColorSelection() {
-  const { selectedColor, addColor } = useOnboardingStore();
-
   return (
     <div className={styles.base}>
       <div className='max-w-[1200px] xl:max-w-[1000px] m-auto w-full px-2'>

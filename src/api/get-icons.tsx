@@ -1,5 +1,6 @@
 import axios from "axios";
 import { faker } from "@faker-js/faker";
+import * as mockData from "@/utils/mock-data.json";
 
 export const getHubspotIcons = async (
   industry: string,
@@ -24,4 +25,19 @@ export const getBusinessLogos = (industry: string, quantity: number = 12) => {
     })
   );
   return images;
+};
+
+export function getRandomElementsFromArray(arr: Array<any>, n: number) {
+  return arr.sort(() => 0.5 - Math.random()).slice(0, n);
+}
+
+export const getBusinessIcons = (industry: string, quantity: number = 12) => {
+  if (!industry) {
+    return;
+  }
+  const icons = mockData.icons;
+
+  const selectedIcons = getRandomElementsFromArray(icons, quantity);
+
+  return selectedIcons;
 };

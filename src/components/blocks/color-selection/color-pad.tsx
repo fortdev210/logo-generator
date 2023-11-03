@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { AVALIABLE_COLORS } from "@/utils/contants";
+import { AVALIABLE_COLORS, ONBOARDING_STEP_ENUM } from "@/utils/contants";
 import { useOnboardingStore } from "@/store/onboardingStore";
 import MaterialIcon from "@/components/icons/material-icon";
 
@@ -15,10 +15,11 @@ interface ColorSelectionPadProps {
 export default function ColorSelectionPad(props: ColorSelectionPadProps) {
   const { className } = props;
 
-  const { selectedColor, addColor } = useOnboardingStore();
+  const { selectedColor, addColor, setStepsFinished } = useOnboardingStore();
 
   const onColorSelect = (color: string) => {
     addColor(color);
+    setStepsFinished(ONBOARDING_STEP_ENUM.COLOR, true);
   };
 
   return (

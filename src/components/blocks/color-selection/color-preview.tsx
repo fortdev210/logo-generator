@@ -37,7 +37,11 @@ export default function ColorPreview() {
           </div>
         </div>
         <div className='flex gap-2 items-center h-1/2 bg-white w-full justify-center'>
-          <Image src={selectedIcon} alt='icon' width={96} height={96} />
+          <MaterialIcon
+            name={selectedIcon}
+            size={150}
+            style={{ color: selectedColor }}
+          />
           <Typography
             variant='h1'
             text={businessInfo.name}

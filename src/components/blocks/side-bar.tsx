@@ -1,9 +1,8 @@
-import clsx from "clsx";
+import { useRouter } from "next/router";
 import { ONBOARDING_STEP_ENUM, STEP_INFO, TOTAL_STEPS } from "@/utils/contants";
 import Radio from "../base-ui/radio";
 import { useOnboardingStore } from "@/store/onboardingStore";
 import { Typography } from "../base-ui/typography";
-import useStore from "@/store/useStore";
 
 const styles = {
   base: "w-[300px] h-full  z-10 text-white bg-[#213343] px-6 pt-[100px]",
@@ -34,7 +33,7 @@ const StepItems = [
   },
   {
     title: "Select your primary color",
-    link: "/primary-color",
+    link: "/color-selection",
     step: ONBOARDING_STEP_ENUM.COLOR,
   },
   {
@@ -50,7 +49,15 @@ const StepItems = [
 ];
 
 export default function SideBar(props: SideBarProps) {
-  const { currentStep, stepsFinished } = useOnboardingStore();
+  const { currentStep, stepsFinished, setCurrentStep } = useOnboardingStore();
+  const router = useRouter();
+
+  const onClickItem = (index: number) => {
+    if (stepsFinished[index]) {
+      setCurrentStep(StepItems[index].step);
+      router.push(StepItems[index].link);
+    }
+  };
 
   return (
     <div className={styles.base}>
@@ -66,7 +73,11 @@ export default function SideBar(props: SideBarProps) {
       />
       <div className='mt-20'>
         {StepItems.map((item, index) => (
-          <div key={index} className={styles.item}>
+          <div
+            key={index}
+            className={styles.item}
+            onClick={() => onClickItem(index)}
+          >
             <p className='text-sm'>{item.title}</p>
             <Radio
               variant={

@@ -1,4 +1,4 @@
-import { getBusinessLogos } from "@/api/get-icons";
+import { getBusinessIcons } from "@/api/get-icons";
 import Input from "@/components/base-ui/input";
 import { Typography } from "@/components/base-ui/typography";
 import MaterialIcon from "@/components/icons/material-icon";
@@ -19,14 +19,14 @@ export default function IconSelection() {
   const { selectedIcon, addIcon, setStepsFinished } = useOnboardingStore();
 
   useEffect(() => {
-    const res = getBusinessLogos("restaurants");
+    const res = getBusinessIcons("restaurants");
     if (res) {
       setIcons(res);
     }
   }, []);
 
   const onLoadMore = () => {
-    const res = getBusinessLogos("restaurants");
+    const res = getBusinessIcons("restaurants");
     if (res) {
       setIcons([...icons, ...res]);
     }
@@ -53,7 +53,7 @@ export default function IconSelection() {
           iconR={<MaterialIcon name='search' size={24} />}
         />
       </div>
-      <div className='w-3/4 grid grid-cols-3 lg:grid-cols-4 gap-4 mt-10'>
+      <div className='w-fit grid grid-cols-3 lg:grid-cols-4 gap-4 mt-10'>
         {icons.map((icon, index) => (
           <IconCard
             key={index}

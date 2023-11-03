@@ -1,7 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import Image from "next/image";
-import Radio from "@/components/base-ui/radio";
+import MaterialIcon from "@/components/icons/material-icon";
 
 interface IconCardProps {
   iconSrc: string;
@@ -11,7 +10,7 @@ interface IconCardProps {
 }
 
 const styles = {
-  base: "flex items-center justify-center relative rounded-lg bg-white w-full h-full overflow-hidden cursor-pointer ",
+  base: "flex items-center justify-center relative rounded-lg bg-white w-[180px] h-[180px] overflow-hidden cursor-pointer ",
 };
 
 export default function IconCard(props: IconCardProps) {
@@ -28,13 +27,7 @@ export default function IconCard(props: IconCardProps) {
         checked={selected}
         readOnly
       />
-      <Image
-        layout='responsive'
-        width={200}
-        height={200}
-        src={iconSrc}
-        alt='icon'
-      />
+      <MaterialIcon name={iconSrc} size={100} />
     </div>
   );
 }
