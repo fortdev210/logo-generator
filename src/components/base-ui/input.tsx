@@ -87,7 +87,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             disabled={disabled ?? false}
             {...props}
           />
-          <div className='absolute inset-y-2 right-2 ml-2'>{iconR}</div>
+          <div className='absolute inset-y-4 right-2 ml-2'>{iconR}</div>
         </div>
       </div>
     );

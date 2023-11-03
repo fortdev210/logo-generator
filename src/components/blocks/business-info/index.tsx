@@ -1,5 +1,4 @@
 import Input from "@/components/base-ui/input";
-import Button from "@/components/base-ui/button";
 
 const styles = {
   base: "w-full flex items-center justify-center flex-col bg-[rgb(234 240 246)] ",
