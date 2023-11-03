@@ -30,3 +30,19 @@ body {
   backdrop-filter: saturate(180%) blur(20px);
   background-color: rgba(255, 255, 255, 0.85);
 }
+
+/* For Webkit-based browsers (Chrome, Safari) */
+/* Customize the scrollbar track */
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+
+/* Customize the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #7691ad; /* Color of the thumb */
+  border-radius: 6px; /* Rounded corners of the thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2e475d; /* Set the background color you want */
+}

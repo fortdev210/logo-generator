@@ -18,6 +18,7 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
     businessInfo,
     setStepsFinished,
     selectedIcon,
+    selectedFont,
   } = useOnboardingStore();
 
   const onNext = () => {
@@ -34,6 +35,13 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
           setCurrentStep(ONBOARDING_STEP_ENUM.FONT);
           setStepsFinished(ONBOARDING_STEP_ENUM.ICON, true);
           router.push("/font-selection");
+        }
+        break;
+      case ONBOARDING_STEP_ENUM.FONT:
+        if (selectedFont) {
+          setCurrentStep(ONBOARDING_STEP_ENUM.COLOR);
+          setStepsFinished(ONBOARDING_STEP_ENUM.FONT, true);
+          router.push("/color-selection");
         }
         break;
       default:
@@ -55,6 +63,10 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
       case ONBOARDING_STEP_ENUM.FONT:
         setCurrentStep(ONBOARDING_STEP_ENUM.ICON);
         router.push("/icon-selection");
+        break;
+      case ONBOARDING_STEP_ENUM.COLOR:
+        setCurrentStep(ONBOARDING_STEP_ENUM.FONT);
+        router.push("/font-selection");
         break;
       default:
         break;

@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useOnboardingStore } from "@/store/onboardingStore";
 import IconCard from "./icon-card";
 import Button from "@/components/base-ui/button";
+import { ONBOARDING_STEP_ENUM } from "@/utils/contants";
 
 const styles = {
   base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] pt-[100px] ",
@@ -15,7 +16,7 @@ const styles = {
 export default function IconSelection() {
   const [icons, setIcons] = useState<string[]>([]);
 
-  const { selectedIcon, addIcon } = useOnboardingStore();
+  const { selectedIcon, addIcon, setStepsFinished } = useOnboardingStore();
 
   useEffect(() => {
     const res = getBusinessLogos("restaurants");
@@ -33,6 +34,7 @@ export default function IconSelection() {
 
   const onSelectLogo = (logo: string) => {
     addIcon(logo);
+    setStepsFinished(ONBOARDING_STEP_ENUM.ICON, true);
   };
 
   return (
