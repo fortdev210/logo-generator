@@ -6,6 +6,7 @@ import { useOnboardingStore } from "@/store/onboardingStore";
 const inter = Inter({ subsets: ["latin"] });
 
 const styles = {
+  base: "flex min-h-screen flex-col items-center justify-between p-24 ${inter.className} bg-[url('https://www.hubspot.com/hubfs/brand-kit-generator/section-1.webp')]",
   input:
     "border text-xl px-4 border-solid border-gray-400 h-16 max-w-[500px] flex-1 rounded-l-lg",
   button: "h-16 bg-[#ff5c35] rounded-r-lg text-white px-4 hover:bg-[#ff7b5c]",
@@ -15,7 +16,7 @@ const styles = {
 
 export default function Home() {
   const router = useRouter();
-  const { setBusinessInfo, businessInfo } = useOnboardingStore();
+  const { addBusinessInfo, businessInfo } = useOnboardingStore();
 
   const onStart = () => {
     if (!businessInfo.name) {
@@ -25,19 +26,19 @@ export default function Home() {
   };
 
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className} bg-[url('https://www.hubspot.com/hubfs/brand-kit-generator/section-1.webp')]`}
-    >
+    <main className={styles.base}>
       <div className='m-auto w-1/2 flex flex-col items-center justify-center'>
         <Typography
           className={styles.title}
           variant='h1'
           text=' Free Logo Creator & Brand Identity Design'
         />
-        <p className={styles.description}>
-          Create custom logos, icons, and color palettes in an instant to build
-          a unique online presence for your business
-        </p>
+        <Typography
+          variant='cta'
+          text='Create custom logos, icons, and color palettes in an instant to build
+          a unique online presence for your business'
+          className='mb-10 text-center text-white'
+        />
         <div className='flex items-center justify-center w-full'>
           <input
             type='text'
@@ -46,7 +47,7 @@ export default function Home() {
             value={businessInfo.name}
             name='name'
             onChange={(e) =>
-              setBusinessInfo({ ...businessInfo, name: e.target.value })
+              addBusinessInfo({ ...businessInfo, name: e.target.value })
             }
           />
           <button className={styles.button} onClick={onStart}>

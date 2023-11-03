@@ -8,7 +8,7 @@ const styles = {
 };
 
 export default function BussinessInfo() {
-  const { setBusinessInfo, businessInfo } = useOnboardingStore();
+  const { addBusinessInfo, businessInfo } = useOnboardingStore();
 
   return (
     <div className={styles.base}>
@@ -34,7 +34,7 @@ export default function BussinessInfo() {
             name='name'
             value={businessInfo.name}
             onChange={(e) =>
-              setBusinessInfo({ ...businessInfo, name: e.target.value })
+              addBusinessInfo({ ...businessInfo, name: e.target.value })
             }
           />
           <Input
@@ -46,7 +46,7 @@ export default function BussinessInfo() {
             value={businessInfo.industry}
             name='industry'
             onChange={(e) =>
-              setBusinessInfo({ ...businessInfo, industry: e.target.value })
+              addBusinessInfo({ ...businessInfo, industry: e.target.value })
             }
           />
           <Input
@@ -57,7 +57,7 @@ export default function BussinessInfo() {
             name='slogan'
             value={businessInfo.slogan}
             onChange={(e) =>
-              setBusinessInfo({ ...businessInfo, slogan: e.target.value })
+              addBusinessInfo({ ...businessInfo, slogan: e.target.value })
             }
           />
         </form>

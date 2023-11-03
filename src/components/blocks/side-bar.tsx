@@ -1,6 +1,9 @@
 import clsx from "clsx";
-import { STEP_INFO, TOTAL_STEPS } from "@/utils/contants";
+import { ONBOARDING_STEP_ENUM, STEP_INFO, TOTAL_STEPS } from "@/utils/contants";
 import Radio from "../base-ui/radio";
+import { useOnboardingStore } from "@/store/onboardingStore";
+import { Typography } from "../base-ui/typography";
+import useStore from "@/store/useStore";
 
 const styles = {
   base: "w-[300px] h-full  z-10 text-white bg-[#213343] px-6 pt-[100px]",
@@ -10,47 +13,70 @@ const styles = {
 };
 
 interface SideBarProps {
-  /**
-   * The current step of the onboarding process
-   */
-  step: number;
+  className?: string;
 }
 
 const StepItems = [
   {
     title: "Enter your Business information",
+    link: "/info",
+    step: ONBOARDING_STEP_ENUM.BUSINESS_INFO,
   },
   {
     title: "Select your icon",
+    link: "/icon-selection",
+    step: ONBOARDING_STEP_ENUM.ICON,
   },
   {
     title: "Select your font",
+    link: "/font-selection",
+    step: ONBOARDING_STEP_ENUM.FONT,
   },
   {
     title: "Select your primary color",
+    link: "/primary-color",
+    step: ONBOARDING_STEP_ENUM.COLOR,
   },
   {
     title: "Select your logo",
+    link: "/logo-selection",
+    step: ONBOARDING_STEP_ENUM.LOGO,
   },
   {
     title: "Customize your brand kit",
+    link: "/brand-kit",
+    step: ONBOARDING_STEP_ENUM.BRAND_KIT,
   },
 ];
 
 export default function SideBar(props: SideBarProps) {
-  const { step } = props;
+  const { currentStep, stepsFinished } = useOnboardingStore();
 
   return (
     <div className={styles.base}>
-      <p className={styles.step}>
-        Step {step}/{TOTAL_STEPS}
-      </p>
-      <p className={styles.description}>{STEP_INFO[step - 1]}</p>
+      <Typography
+        variant='cta'
+        text={`Step ${currentStep + 1}/${TOTAL_STEPS}`}
+        className={styles.step}
+      />
+      <Typography
+        variant='body'
+        className={styles.description}
+        text={STEP_INFO[currentStep]}
+      />
       <div className='mt-20'>
         {StepItems.map((item, index) => (
           <div key={index} className={styles.item}>
             <p className='text-sm'>{item.title}</p>
-            <Radio variant='pending' />
+            <Radio
+              variant={
+                currentStep === index
+                  ? "updating"
+                  : stepsFinished && stepsFinished[index]
+                  ? "done"
+                  : "pending"
+              }
+            />
           </div>
         ))}
       </div>
