@@ -1,6 +1,6 @@
 import axios from "axios";
 import { faker } from "@faker-js/faker";
-import * as mockData from "@/utils/mock-data.json";
+import mockData from "@/utils/mock-data.json";
 
 export const getHubspotIcons = async (
   industry: string,

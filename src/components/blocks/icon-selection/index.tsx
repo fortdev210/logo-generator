@@ -39,7 +39,7 @@ export default function IconSelection() {
 
   return (
     <div className={styles.base}>
-      <div className='flex items-center justify-between w-3/4 m-auto'>
+      <div className='flex items-center justify-between m-auto'>
         <div>
           <Typography text='Select Your Business Logo Mark' variant='h1' />
           <Typography
