@@ -18,13 +18,18 @@ export enum ONBOARDING_STEP_ENUM {
 }
 
 export const AVAILABLE_FONTS = [
-  "font-sans",
-  "font-noto",
-  "font-italic",
-  "font-serif",
-  "font-bold",
-  "font-mono",
-  "font-courier",
+  "Times New Roman",
+  "Georgia",
+  "Garamond",
+  "Palatino",
+  "Arial",
+  "Helvetica",
+  "Calibri",
+  "Verdana",
+  "Courier New",
+  "Consolas",
+  "Menlo",
+  "Monaco",
 ];
 
 export const AVALIABLE_COLORS = [

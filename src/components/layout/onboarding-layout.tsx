@@ -1,9 +1,10 @@
-import { useRouter } from "next/router";
-import SideBar from "../blocks/side-bar";
 import Button from "@/components/base-ui/button";
-import MaterialIcon from "../icons/material-icon";
 import { useOnboardingStore } from "@/store/onboardingStore";
 import { ONBOARDING_STEP_ENUM } from "@/utils/contants";
+import { useRouter } from "next/router";
+
+import SideBar from "../blocks/side-bar";
+import MaterialIcon from "../icons/material-icon";
 
 interface OnboardingLayoutProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
     selectedIcon,
     selectedFont,
     selectedColor,
+    selectedLogo,
   } = useOnboardingStore();
 
   const onNext = () => {
@@ -51,17 +53,18 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
           setStepsFinished(ONBOARDING_STEP_ENUM.COLOR, true);
           router.push("/logo-selection");
         }
+      case ONBOARDING_STEP_ENUM.LOGO:
+        if (selectedLogo) {
+          setCurrentStep(ONBOARDING_STEP_ENUM.BRAND_KIT);
+          setStepsFinished(ONBOARDING_STEP_ENUM.LOGO, true);
+          router.push("/editor");
+        }
       default:
         break;
     }
   };
 
   const onBack = () => {
-    if (currentStep === ONBOARDING_STEP_ENUM.ICON) {
-      setCurrentStep(ONBOARDING_STEP_ENUM.BUSINESS_INFO);
-      router.push("/info");
-    }
-
     switch (currentStep) {
       case ONBOARDING_STEP_ENUM.ICON:
         setCurrentStep(ONBOARDING_STEP_ENUM.BUSINESS_INFO);
@@ -79,6 +82,9 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
         setCurrentStep(ONBOARDING_STEP_ENUM.COLOR);
         router.push("/color-selection");
         break;
+      case ONBOARDING_STEP_ENUM.BRAND_KIT:
+        setCurrentStep(ONBOARDING_STEP_ENUM.LOGO);
+        router.push("/logo-selection");
       default:
         break;
     }

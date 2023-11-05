@@ -40,6 +40,7 @@ const config: Config = {
       primary: "#FFFFFF",
       secondary: "#03030314",
       tertiary: "#F7F7F7",
+      gray: "#b6c7d6",
       quaternary: "#FBFBFB",
       overlay: "#2B2B2B1F",
       accent: "#116DCA",

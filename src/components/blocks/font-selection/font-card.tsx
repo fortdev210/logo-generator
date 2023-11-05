@@ -10,7 +10,7 @@ interface FontCardProps {
 }
 
 const styles = {
-  base: "flex items-center justify-center relative rounded-lg bg-white overflow-hidden cursor-pointer text-[80px] xl:text-[100px] bg-white shadow w-[180px] h-[180px]  xl:w-[230px] xl:h-[230px] ",
+  base: "flex items-center justify-center relative rounded-lg bg-white overflow-hidden cursor-pointer text-[50px] xl:text-[100px] bg-white shadow w-[180px] h-[180px]  xl:w-[230px] xl:h-[230px] ",
 };
 
 export default function FontCard(props: FontCardProps) {
@@ -28,7 +28,7 @@ export default function FontCard(props: FontCardProps) {
         readOnly
       />
       <div>
-        <p className={font}>Test</p>
+        <p style={{ fontFamily: font }}>Test</p>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import FontSelection from "@/components/blocks/font-selection";
+import LogoEditor from "@/components/blocks/editor";
 import dynamic from "next/dynamic";
 
 const OnboardingLayout = dynamic(
@@ -8,10 +8,10 @@ const OnboardingLayout = dynamic(
   }
 );
 
-export default function OnboardingFont() {
+export default function EditLogo() {
   return (
     <OnboardingLayout>
-      <FontSelection />
+      <LogoEditor />
     </OnboardingLayout>
   );
 }
