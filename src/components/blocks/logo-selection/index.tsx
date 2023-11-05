@@ -1,22 +1,35 @@
-import React, { useState } from "react";
-import { Typography } from "@/components/base-ui/typography";
-import { AVALIABLE_COLORS } from "@/utils/contants";
-import LogoCard from "./logo-card";
-import { useOnboardingStore } from "@/store/onboardingStore";
 import Button from "@/components/base-ui/button";
+import { Typography } from "@/components/base-ui/typography";
+import { useOnboardingStore } from "@/store/onboardingStore";
+import { AVALIABLE_COLORS, ONBOARDING_STEP_ENUM } from "@/utils/contants";
+import React, { useState } from "react";
+
+import LogoCard from "./logo-card";
 
 const styles = {
   base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] pt-[100px] ",
 };
 
 export default function LogoSelection() {
-  const { selectedColor, selectedFont, selectedIcon, businessInfo } =
-    useOnboardingStore();
+  const {
+    selectedColor,
+    selectedFont,
+    selectedIcon,
+    selectedLogo,
+    businessInfo,
+    addLogo,
+    setStepsFinished,
+  } = useOnboardingStore();
 
   const [loadingItems, setLoadingItems] = useState(16);
 
   const onLoadMore = () => {
     setLoadingItems((loadingItems) => loadingItems + 8);
+  };
+
+  const onSelectLogo = (logo: string) => {
+    addLogo(logo);
+    setStepsFinished(ONBOARDING_STEP_ENUM.LOGO, true);
   };
 
   return (
@@ -38,6 +51,8 @@ export default function LogoSelection() {
                 font={selectedFont}
                 key={index}
                 bgColor={color}
+                onSelect={onSelectLogo}
+                selected={selectedLogo === color}
               />
             ))}
           </div>

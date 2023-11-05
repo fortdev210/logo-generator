@@ -1,15 +1,16 @@
-import clsx from "clsx";
-import MaterialIcon from "@/components/icons/material-icon";
 import { Typography } from "@/components/base-ui/typography";
+import MaterialIcon from "@/components/icons/material-icon";
+import clsx from "clsx";
 
 interface LogoCardProps {
   className?: string;
-  selected?: boolean;
   text: string;
   icon: string;
   font: string;
   bgColor: string;
   selectedColor: string;
+  onSelect: (logo: string) => void;
+  selected?: boolean;
 }
 
 const styles = {
@@ -17,13 +18,22 @@ const styles = {
 };
 
 export default function LogoCard(props: LogoCardProps) {
-  const { text, selected, icon, bgColor, className, font, selectedColor } =
-    props;
+  const {
+    text,
+    selected,
+    icon,
+    bgColor,
+    className,
+    font,
+    selectedColor,
+    onSelect,
+  } = props;
 
   return (
     <div
       className={clsx(styles.base, className)}
       style={{ background: bgColor }}
+      onClick={() => onSelect(bgColor)}
     >
       <input
         className='absolute right-3 top-3 w-8 h-8 '

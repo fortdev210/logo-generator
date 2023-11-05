@@ -1,12 +1,13 @@
 import { getBusinessIcons } from "@/api/get-icons";
+import Button from "@/components/base-ui/button";
 import Input from "@/components/base-ui/input";
 import { Typography } from "@/components/base-ui/typography";
 import MaterialIcon from "@/components/icons/material-icon";
-import React, { useEffect, useState } from "react";
 import { useOnboardingStore } from "@/store/onboardingStore";
-import IconCard from "./icon-card";
-import Button from "@/components/base-ui/button";
 import { ONBOARDING_STEP_ENUM } from "@/utils/contants";
+import React, { useEffect, useState } from "react";
+
+import IconCard from "./icon-card";
 
 const styles = {
   base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] pt-[100px] ",
@@ -32,7 +33,7 @@ export default function IconSelection() {
     }
   };
 
-  const onSelectLogo = (logo: string) => {
+  const onSelectIcon = (logo: string) => {
     addIcon(logo);
     setStepsFinished(ONBOARDING_STEP_ENUM.ICON, true);
   };
@@ -59,7 +60,7 @@ export default function IconSelection() {
             key={index}
             iconSrc={icon}
             selected={icon === selectedIcon}
-            onSelect={onSelectLogo}
+            onSelect={onSelectIcon}
           />
         ))}
       </div>
