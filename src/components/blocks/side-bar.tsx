@@ -43,7 +43,7 @@ const StepItems = [
   },
   {
     title: "Customize your brand kit",
-    link: "/brand-kit",
+    link: "/editor",
     step: ONBOARDING_STEP_ENUM.BRAND_KIT,
   },
 ];

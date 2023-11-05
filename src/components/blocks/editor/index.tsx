@@ -1,9 +1,7 @@
 import { Typography } from "@/components/base-ui/typography";
 import clsx from "clsx";
 import React from "react";
-
 import EditorPanel from "./editor-panel";
-import IconSelect from "./icon-select";
 
 const styles = {
   base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] pt-[100px] h-full ",

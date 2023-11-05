@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import ColorSelect from "./color-select";
 import FontSelect from "./font-select";
 import IconSelect from "./icon-select";
+import LayoutSelect from "./layout-select";
 
 interface EditorPanelProps {
   /**
@@ -72,6 +73,7 @@ export default function EditorPanel({ className }: EditorPanelProps) {
         {editingItem === "icon" && <IconSelect />}
         {editingItem === "color" && <ColorSelect />}
         {editingItem === "font" && <FontSelect />}
+        {editingItem === "layout" && <LayoutSelect />}
       </div>
     </div>
   );

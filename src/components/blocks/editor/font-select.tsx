@@ -1,4 +1,3 @@
-import { Typography } from "@/components/base-ui/typography";
 import { AVAILABLE_FONTS } from "@/utils/contants";
 import clsx from "clsx";
 
