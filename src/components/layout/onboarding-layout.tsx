@@ -59,6 +59,8 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
           setStepsFinished(ONBOARDING_STEP_ENUM.LOGO, true);
           router.push("/editor");
         }
+      case ONBOARDING_STEP_ENUM.BRAND_KIT:
+        router.push("/final");
       default:
         break;
     }
