@@ -36,6 +36,7 @@ const config: Config = {
       current: "current",
     },
     colors: {
+      default: "#eaf0f6",
       transparent: "transparent",
       primary: "#FFFFFF",
       secondary: "#03030314",

@@ -42,7 +42,7 @@ export default function LayoutSelect({
             key={layout.value}
             className={clsx(
               "h-[120px]",
-              layout.value === selected ? " bg-[#eaf0f6]" : ""
+              layout.value === selected ? " bg-default" : ""
             )}
             onClick={() => onSelect(layout.value)}
           >

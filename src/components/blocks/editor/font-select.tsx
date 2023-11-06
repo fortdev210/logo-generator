@@ -4,7 +4,7 @@ import clsx from "clsx";
 const styles = {
   base: "rounded-sm border border-gray w-1/2 p-3 ",
   fontItem:
-    "w-full cursor-pointer h-11 flex items-center hover:bg-[#eaf0f6] pl-4",
+    "w-full cursor-pointer h-11 flex items-center hover:bg-default pl-4",
 };
 
 interface FontSelectProps {

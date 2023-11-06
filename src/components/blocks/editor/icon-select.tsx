@@ -47,7 +47,7 @@ export default function IconSelect({
         <div
           className={clsx(
             styles.iconCard,
-            selectedIcon === icon ? "bg-[#eaf0f6]" : ""
+            selectedIcon === icon ? "bg-default" : ""
           )}
           key={index}
           onClick={() => onSelect(icon)}

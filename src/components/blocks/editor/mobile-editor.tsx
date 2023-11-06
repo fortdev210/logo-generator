@@ -12,7 +12,7 @@ import { getBusinessIcons } from "@/api/get-icons";
 const styles = {
   base: "",
   itemCardBase:
-    "w-16 aspect-square flex items-center justify-center flex-col shadow rounded bg-[#eaf0f6]",
+    "w-16 aspect-square flex items-center justify-center flex-col shadow rounded bg-default",
   preview: "rounded bg-white my-5 w-full p-4 ",
   logoLayout: "rounded border border-[#eaf0f6] w-full h-[145px] ",
 };

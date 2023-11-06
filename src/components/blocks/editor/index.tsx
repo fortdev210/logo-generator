@@ -5,7 +5,7 @@ import EditorPanel from "./editor-panel";
 import MobileEditor from "./mobile-editor";
 
 const styles = {
-  base: "w-full block xl:flex items-center justify-center flex-col bg-[#eaf0f6] pt-[100px] h-full ",
+  base: "w-full block xl:flex items-center justify-center flex-col bg-default pt-[100px] h-full ",
 };
 
 interface LogoEditorProps {

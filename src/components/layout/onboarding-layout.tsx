@@ -105,7 +105,7 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
       <SideBar />
       <div className='flex-1 overflow-scroll relative'>
         {children}
-        <div className='bottom-0 fixed gap-2 z-10 w-full md:w-[calc(100vw-300px)] h-20 flex items-center bg-[#eaf0f6] pr-10 justify-end '>
+        <div className='bottom-0 fixed gap-2 z-10 w-full md:w-[calc(100vw-300px)] h-20 flex items-center bg-default pr-10 justify-end '>
           {currentStep > ONBOARDING_STEP_ENUM.BUSINESS_INFO ? (
             <Button variant='secondary' onClick={onBack}>
               <MaterialIcon name='arrow_back_ios' size={15} />

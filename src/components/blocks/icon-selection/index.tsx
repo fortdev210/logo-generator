@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import IconCard from "./icon-card";
 
 const styles = {
-  base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] p-10  md:pt-[100px]  ",
+  base: "w-full flex items-center justify-center flex-col bg-default p-10  md:pt-[100px]  ",
   title: "text-3xl font-semibold mb-4",
 };
 
