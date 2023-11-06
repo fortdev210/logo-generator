@@ -24,9 +24,9 @@ export default function ColorSelectionPad(props: ColorSelectionPadProps) {
 
   return (
     <div className={clsx(styles.base, className)}>
-      {AVALIABLE_COLORS.map((color) => (
+      {AVALIABLE_COLORS.map((color, index) => (
         <div
-          key={color}
+          key={index}
           className={styles.card}
           onClick={() => onColorSelect(color)}
           style={{ backgroundColor: color }}
