@@ -10,7 +10,7 @@ interface IconCardProps {
 }
 
 const styles = {
-  base: "flex items-center justify-center relative rounded-lg bg-white w-[180px] h-[180px] overflow-hidden cursor-pointer ",
+  base: "flex items-center justify-center relative rounded-lg bg-white w-full aspect-square overflow-hidden cursor-pointer ",
 };
 
 export default function IconCard(props: IconCardProps) {

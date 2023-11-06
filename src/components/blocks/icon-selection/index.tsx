@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import IconCard from "./icon-card";
 
 const styles = {
-  base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] pt-[100px] ",
+  base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] p-4  md:pt-[100px] h-full md:h-auto ",
   title: "text-3xl font-semibold mb-4",
 };
 
@@ -40,13 +40,17 @@ export default function IconSelection() {
 
   return (
     <div className={styles.base}>
-      <div className='flex items-center justify-between m-auto'>
+      <div className='flex items-center justify-between m-auto w-full md:w-2/3 flex-col md:flex-row'>
         <div>
-          <Typography text='Select Your Business Logo Mark' variant='h1' />
+          <Typography
+            text='Select Your Business Logo Mark'
+            variant='h1'
+            className='hidden md:block'
+          />
           <Typography
             text='Select or search for the icon that better your business'
             variant='body1'
-            className='mt-3'
+            className='mt-3 mb-5 md:mb-0'
           />
         </div>
         <Input
@@ -54,7 +58,7 @@ export default function IconSelection() {
           iconR={<MaterialIcon name='search' size={24} />}
         />
       </div>
-      <div className='w-fit grid grid-cols-3 lg:grid-cols-4 gap-4 mt-10'>
+      <div className='w-full md:w-2/3 grid grid-cols-3 lg:grid-cols-4 gap-4 mt-10'>
         {icons.map((icon, index) => (
           <IconCard
             key={index}

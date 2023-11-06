@@ -5,7 +5,7 @@ import { useOnboardingStore } from "@/store/onboardingStore";
 import { ONBOARDING_STEP_ENUM } from "@/utils/contants";
 
 const styles = {
-  base: "w-full flex items-center justify-center flex-col bg-[rgb(234 240 246)] pt-[100px]",
+  base: "w-full flex items-center justify-center flex-col bg-[rgb(234 240 246)] p-10 md:pt-[100px] ",
 };
 
 export default function FontSelection() {
@@ -22,7 +22,7 @@ export default function FontSelection() {
         <Typography
           variant='h1'
           text='Select Your Business Primary Font'
-          className='mb-4'
+          className='mb-4 hidden md:block'
         />
         <Typography
           variant='body1'

@@ -5,7 +5,7 @@ import { useOnboardingStore } from "@/store/onboardingStore";
 import MaterialIcon from "@/components/icons/material-icon";
 
 const styles = {
-  base: "w-full ",
+  base: "w-full hidden md:block",
   preview:
     "flex items-center justify-center rounded-lg shadow bg-white h-[500px] max-w-[450px] flex-col relative bg-[#f6f9fc]",
   mark: "w-9 h-9 rounded-full text-white flex items-center justify-center ",

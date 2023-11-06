@@ -75,7 +75,7 @@ export default function EditorPanel({ className }: EditorPanelProps) {
           </Button>
           <Button
             variant='secondary'
-            icon={<MaterialIcon name='format_color_fill' />}
+            icon={<MaterialIcon name='star_border_purple500' />}
             onClick={() => setEditingItem("color")}
           >
             Color

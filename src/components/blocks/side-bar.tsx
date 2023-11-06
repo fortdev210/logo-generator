@@ -5,7 +5,7 @@ import { useOnboardingStore } from "@/store/onboardingStore";
 import { Typography } from "../base-ui/typography";
 
 const styles = {
-  base: "w-[300px] h-full  z-10 text-white bg-[#213343] px-6 pt-[100px]",
+  base: "w-[300px] h-full  z-10 text-white bg-[#213343] px-6 pt-[100px] hidden md:block",
   step: "text-white font-semibold text-xl mb-4",
   description: "text-white text-base",
   item: "flex items-center justify-between text-white pb-4 border-b border-tertiary mb-3 cursor-pointer",

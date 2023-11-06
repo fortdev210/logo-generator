@@ -3,7 +3,7 @@ import ColorSelectionPad from "./color-pad";
 import ColorPreview from "./color-preview";
 
 const styles = {
-  base: "w-full flex items-center justify-center flex-col bg-[rgb(234 240 246)] pt-[100px]",
+  base: "w-full flex items-center justify-center flex-col bg-[rgb(234 240 246)]  p-10 md:pt-[100px]",
 };
 
 export default function ColorSelection() {
@@ -13,7 +13,7 @@ export default function ColorSelection() {
         <Typography
           variant='h1'
           text='Select Your Business Primary Color'
-          className='mb-4'
+          className='mb-4 hidden md:block'
         />
         <Typography
           variant='body1'
