@@ -1,5 +1,6 @@
 import { getBusinessIcons } from "@/api/get-icons";
 import MaterialIcon from "@/components/icons/material-icon";
+import { useOnboardingStore } from "@/store/onboardingStore";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 
@@ -14,9 +15,23 @@ interface IconSelectProps {
    * Classname
    */
   className?: string;
+
+  /**
+   * On select each item
+   */
+  onSelect: (icon: string) => void;
+
+  /**
+   * Selected
+   */
+  selectedIcon: string;
 }
 
-export default function IconSelect({ className }: IconSelectProps) {
+export default function IconSelect({
+  className,
+  onSelect,
+  selectedIcon,
+}: IconSelectProps) {
   const [icons, setIcons] = useState<string[]>([]);
 
   useEffect(() => {
@@ -29,8 +44,20 @@ export default function IconSelect({ className }: IconSelectProps) {
   return (
     <div className={clsx(styles.base, className)}>
       {icons.map((icon, index) => (
-        <div className={styles.iconCard} key={index}>
-          <MaterialIcon name={icon} size={50} type='outlined' />
+        <div
+          className={clsx(
+            styles.iconCard,
+            selectedIcon === icon ? "bg-[#eaf0f6]" : ""
+          )}
+          key={index}
+          onClick={() => onSelect(icon)}
+        >
+          <MaterialIcon
+            name={icon}
+            size={50}
+            type='outlined'
+            className='cursor-pointer '
+          />
         </div>
       ))}
     </div>

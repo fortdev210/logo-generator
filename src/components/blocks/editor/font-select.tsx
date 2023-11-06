@@ -12,14 +12,35 @@ interface FontSelectProps {
    * Classname
    */
   className?: string;
+
+  /**
+   * Selected font
+   */
+  selectedFont: string;
+
+  /**
+   * On selecting font
+   */
+  onSelect: (font: string) => void;
 }
 
-export default function FontSelect({ className }: FontSelectProps) {
+export default function FontSelect({
+  className,
+  onSelect,
+  selectedFont,
+}: FontSelectProps) {
   return (
     <div className={clsx(styles.base, className)}>
       <ul>
         {AVAILABLE_FONTS.map((font, index) => (
-          <li className={styles.fontItem} key={index}>
+          <li
+            className={clsx(
+              styles.fontItem,
+              selectedFont === font ? " bg-gray" : ""
+            )}
+            key={index}
+            onClick={() => onSelect(font)}
+          >
             <span style={{ fontFamily: font }}>{font}</span>
           </li>
         ))}

@@ -17,6 +17,11 @@ interface LayoutCardProps {
    * Text
    */
   text: string;
+
+  /**
+   * Font style
+   */
+  font: string;
 }
 
 const styles = {
@@ -27,11 +32,14 @@ export const HorizontalLayoutCard = ({
   className,
   icon,
   text,
+  font,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, className)}>
       <MaterialIcon name={icon} size={50} />
-      <span className='text-xl'>{text}</span>
+      <span className='text-xl' style={{ fontFamily: font }}>
+        {text}
+      </span>
     </div>
   );
 };
@@ -40,11 +48,14 @@ export const VerticalLayoutCard = ({
   className,
   icon,
   text,
+  font,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, " flex-col ", className)}>
       <MaterialIcon name={icon} size={50} />
-      <span className='text-xl'>{text}</span>
+      <span className='text-xl' style={{ fontFamily: font }}>
+        {text}
+      </span>
     </div>
   );
 };
@@ -53,19 +64,29 @@ export const RightTextLayoutCard = ({
   className,
   icon,
   text,
+  font,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, className)}>
-      <span className='text-xl'>{text}</span>
+      <span className='text-xl' style={{ fontFamily: font }}>
+        {text}
+      </span>
       <MaterialIcon name={icon} size={50} />
     </div>
   );
 };
 
-export const TextOnlyCard = ({ className, icon, text }: LayoutCardProps) => {
+export const TextOnlyCard = ({
+  className,
+  icon,
+  text,
+  font,
+}: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, className)}>
-      <span className='text-xl'>{text}</span>
+      <span className='text-xl' style={{ fontFamily: font }}>
+        {text}
+      </span>
     </div>
   );
 };
@@ -74,11 +95,15 @@ export const TextInCircleCard = ({
   className,
   icon,
   text,
+  font,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, " py-4 ", className)}>
-      <div className='h-full aspect-square border-2 rounded-full items-center flex justify-center'>
-        <span className='text-xl'>{text}</span>
+      <div className='h-full  aspect-square border-2 rounded-full items-center flex justify-center max-h-[200px] flex-col'>
+        <MaterialIcon name={icon} />
+        <span className='text-xl' style={{ fontFamily: font }}>
+          {text}
+        </span>
       </div>
     </div>
   );
@@ -88,11 +113,15 @@ export const TextInSquareCard = ({
   className,
   icon,
   text,
+  font,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, " py-4 ", className)}>
-      <div className='h-full  aspect-square border-2 items-center flex justify-center'>
-        <span className='text-xl'>{text}</span>
+      <div className='h-full  aspect-square border-2 items-center flex justify-center max-h-[200px] flex-col '>
+        <MaterialIcon name={icon} />
+        <span className='text-xl' style={{ fontFamily: font }}>
+          {text}
+        </span>
       </div>
     </div>
   );

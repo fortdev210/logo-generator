@@ -15,20 +15,42 @@ interface LayoutSelectProps {
    * Classname
    */
   className?: string;
+
+  /**
+   * OnSelect
+   */
+  onSelect: (layout: string) => void;
+
+  /**
+   * Selected
+   */
+  selected: string;
 }
 
-export default function LayoutSelect({ className }: LayoutSelectProps) {
-  const { selectedIcon, businessInfo } = useOnboardingStore();
+export default function LayoutSelect({
+  className,
+  selected,
+  onSelect,
+}: LayoutSelectProps) {
+  const { selectedIcon, businessInfo, selectedFont } = useOnboardingStore();
 
   return (
     <div className={clsx(styles.base, className)}>
       <ul>
         {AVAILABLE_LAYOUT_CARDS.map((layout) => (
-          <div key={layout.value} className='h-[120px]'>
+          <div
+            key={layout.value}
+            className={clsx(
+              "h-[120px]",
+              layout.value === selected ? " bg-[#eaf0f6]" : ""
+            )}
+            onClick={() => onSelect(layout.value)}
+          >
             <layout.Component
               icon={selectedIcon}
               text={businessInfo.name.slice(0, 4)}
               className='border border-[#eaf0f6] gap-3'
+              font={selectedFont}
             />
           </div>
         ))}

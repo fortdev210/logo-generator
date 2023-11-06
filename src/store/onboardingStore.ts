@@ -1,6 +1,11 @@
 import { ONBOARDING_STEP_ENUM } from "@/utils/contants";
 import { create } from "zustand";
-import { combine, createJSONStorage, devtools, persist } from "zustand/middleware";
+import {
+  combine,
+  createJSONStorage,
+  devtools,
+  persist,
+} from "zustand/middleware";
 
 type OnboardingStateType = {
   businessInfo: {
@@ -12,6 +17,7 @@ type OnboardingStateType = {
   selectedFont: string;
   selectedColor: string;
   selectedLogo: string;
+  selectedLayout: string;
   currentStep: number;
   stepsFinished: Record<number, boolean>;
 };
@@ -26,6 +32,7 @@ const OnboardingInitialState: OnboardingStateType = {
   selectedFont: "",
   selectedColor: "",
   selectedLogo: "",
+  selectedLayout: "",
   currentStep: 0,
   stepsFinished: {},
 };
@@ -39,7 +46,8 @@ export const useOnboardingStore = create(
         addIcon: (selectedIcon: string) => set({ selectedIcon }),
         addFont: (selectedFont: string) => set({ selectedFont }),
         addColor: (selectedColor: string) => set({ selectedColor }),
-        addLogo: (selectedLogo: string) => set({selectedLogo}),
+        addLogo: (selectedLogo: string) => set({ selectedLogo }),
+        addLayout: (selectedLayout: string) => set({ selectedLayout }),
         setCurrentStep: (currentStep: number) => set({ currentStep }),
         setStepsFinished: (step: ONBOARDING_STEP_ENUM, value: boolean) =>
           set({

@@ -7,6 +7,9 @@ import ColorSelect from "./color-select";
 import FontSelect from "./font-select";
 import IconSelect from "./icon-select";
 import LayoutSelect from "./layout-select";
+import Preview from "./preview";
+import { AVALIABLE_COLORS } from "@/utils/contants";
+import { useOnboardingStore } from "@/store/onboardingStore";
 
 interface EditorPanelProps {
   /**
@@ -23,6 +26,18 @@ export default function EditorPanel({ className }: EditorPanelProps) {
   const [editingItem, setEditingItem] = useState<
     "icon" | "color" | "font" | "layout"
   >("icon");
+
+  const {
+    selectedIcon,
+    addIcon,
+    selectedColor,
+    addColor,
+    selectedFont,
+    addFont,
+    selectedLayout,
+    addLayout,
+    businessInfo,
+  } = useOnboardingStore();
 
   return (
     <div className={clsx(styles.base, className)}>
@@ -70,10 +85,26 @@ export default function EditorPanel({ className }: EditorPanelProps) {
         </div>
       </div>
       <div className='flex justify-between mt-3 h-[650px] py-3 '>
-        {editingItem === "icon" && <IconSelect />}
-        {editingItem === "color" && <ColorSelect />}
-        {editingItem === "font" && <FontSelect />}
-        {editingItem === "layout" && <LayoutSelect />}
+        {editingItem === "icon" && (
+          <IconSelect selectedIcon={selectedIcon} onSelect={addIcon} />
+        )}
+        {editingItem === "color" && (
+          <ColorSelect selectedColor={selectedColor} onSelect={addColor} />
+        )}
+        {editingItem === "font" && (
+          <FontSelect selectedFont={selectedFont} onSelect={addFont} />
+        )}
+        {editingItem === "layout" && (
+          <LayoutSelect selected={selectedLayout} onSelect={addLayout} />
+        )}
+        <Preview
+          colors={AVALIABLE_COLORS.slice(0, 4)}
+          selectedLayout={selectedLayout}
+          icon={selectedIcon}
+          font={selectedFont}
+          color={selectedColor}
+          text={businessInfo.name}
+        />
       </div>
     </div>
   );

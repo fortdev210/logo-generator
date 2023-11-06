@@ -1,3 +1,4 @@
+import MaterialIcon from "@/components/icons/material-icon";
 import { AVALIABLE_COLORS, ONBOARDING_STEP_ENUM } from "@/utils/contants";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
@@ -13,9 +14,23 @@ interface ColorSelectProps {
    * Classname
    */
   className?: string;
+
+  /**
+   * Selected color
+   */
+  selectedColor: string;
+
+  /**
+   * On selecting color
+   */
+  onSelect: (color: string) => void;
 }
 
-export default function ColorSelect({ className }: ColorSelectProps) {
+export default function ColorSelect({
+  className,
+  selectedColor,
+  onSelect,
+}: ColorSelectProps) {
   return (
     <div className={clsx(styles.base, className)}>
       {AVALIABLE_COLORS.map((color, index) => (
@@ -23,7 +38,12 @@ export default function ColorSelect({ className }: ColorSelectProps) {
           className={styles.colorCard}
           key={index}
           style={{ background: color }}
-        />
+          onClick={() => onSelect(color)}
+        >
+          {selectedColor === color && (
+            <MaterialIcon name='check' className='text-white' />
+          )}
+        </div>
       ))}
     </div>
   );
