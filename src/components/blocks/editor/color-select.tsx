@@ -1,7 +1,7 @@
 import MaterialIcon from "@/components/icons/material-icon";
-import { AVALIABLE_COLORS, ONBOARDING_STEP_ENUM } from "@/utils/contants";
+import { AVALIABLE_COLORS } from "@/utils/contants";
 import clsx from "clsx";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const styles = {
   base: "w-1/2 grid grid-cols-4 gap-2 h-full overflow-y-scroll pr-3 ",
@@ -21,6 +21,11 @@ interface ColorSelectProps {
   selectedColor: string;
 
   /**
+   * Selected Background color
+   */
+  selectedBgColor: string;
+
+  /**
    * On selecting color
    */
   onSelect: (color: string) => void;
@@ -29,6 +34,7 @@ interface ColorSelectProps {
 export default function ColorSelect({
   className,
   selectedColor,
+  selectedBgColor,
   onSelect,
 }: ColorSelectProps) {
   return (
@@ -41,7 +47,10 @@ export default function ColorSelect({
           onClick={() => onSelect(color)}
         >
           {selectedColor === color && (
-            <MaterialIcon name='check' className='text-white' />
+            <MaterialIcon
+              name='check'
+              className={`text-[${selectedBgColor}]`}
+            />
           )}
         </div>
       ))}

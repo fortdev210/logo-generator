@@ -59,7 +59,7 @@ export const useOnboardingStore = create(
               [step]: value,
             },
           }),
-        clearAuth: () => set(OnboardingInitialState),
+        clearOnboarding: () => set(OnboardingInitialState),
       })),
       {
         name: "onboarding-store",

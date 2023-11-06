@@ -8,9 +8,10 @@ import FontSelect from "./font-select";
 import IconSelect from "./icon-select";
 import LayoutSelect from "./layout-select";
 import Preview from "./preview";
-import { AVALIABLE_COLORS } from "@/utils/contants";
+import { AVAILABLE_FONTS, AVALIABLE_COLORS } from "@/utils/contants";
 import { useOnboardingStore } from "@/store/onboardingStore";
 import { negateColor } from "@/utils/color-util";
+import { AVAILABLE_LAYOUT_CARDS } from "./layout-card";
 interface EditorPanelProps {
   /**
    * Classname
@@ -44,6 +45,21 @@ export default function EditorPanel({ className }: EditorPanelProps) {
   const onAddColor = (color: string) => {
     addColor(color);
     addBgColor(negateColor(color));
+  };
+
+  const onUndo = () => {
+    const color =
+      AVALIABLE_COLORS[Math.floor(Math.random() * AVALIABLE_COLORS.length)];
+    addColor(color);
+    addBgColor(negateColor(color));
+  };
+
+  const onReset = () => {
+    const color = AVALIABLE_COLORS[0];
+    addColor(color);
+    addBgColor(negateColor(color));
+    addFont(AVAILABLE_FONTS[0]);
+    addLayout(AVAILABLE_LAYOUT_CARDS[0].value);
   };
 
   return (
@@ -80,12 +96,17 @@ export default function EditorPanel({ className }: EditorPanelProps) {
           </Button>
         </div>
         <div className='flex gap-2 items-center w-fit'>
-          <Button variant='secondary' icon={<MaterialIcon name='undo' />}>
+          <Button
+            variant='secondary'
+            icon={<MaterialIcon name='undo' />}
+            onClick={onUndo}
+          >
             Undo
           </Button>
           <Button
             variant='secondary'
             icon={<MaterialIcon name='cancel' type='outlined' />}
+            onClick={onReset}
           >
             Reset
           </Button>
@@ -96,7 +117,11 @@ export default function EditorPanel({ className }: EditorPanelProps) {
           <IconSelect selectedIcon={selectedIcon} onSelect={addIcon} />
         )}
         {editingItem === "color" && (
-          <ColorSelect selectedColor={selectedColor} onSelect={onAddColor} />
+          <ColorSelect
+            selectedColor={selectedColor}
+            onSelect={onAddColor}
+            selectedBgColor={selectedBgColor}
+          />
         )}
         {editingItem === "font" && (
           <FontSelect selectedFont={selectedFont} onSelect={addFont} />
