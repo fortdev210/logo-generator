@@ -17,6 +17,7 @@ interface PreviewProps {
   font: string;
   icon: string;
   text: string;
+  bgColor: string;
 }
 
 export default function Preview({
@@ -25,6 +26,7 @@ export default function Preview({
   selectedLayout,
   icon,
   color,
+  bgColor,
   font,
   text,
 }: PreviewProps) {
@@ -35,11 +37,16 @@ export default function Preview({
   return (
     <div className={clsx(styles.base, className)}>
       <Typography variant='body' text='PREVIEW' className='text-center pb-1 ' />
-      <div className='w-full rounded border shadow border-[#f3f3f3] flex-1 '>
+      <div
+        className={clsx("w-full rounded border shadow border-[#f3f3f3] flex-1")}
+        style={{ background: bgColor }}
+      >
         <selectedLayoutComponent.Component
           icon={icon}
           text={text}
           font={font}
+          color={color}
+          bgColor={bgColor}
         />
       </div>
       <div className='flex gap-1 items-center pt-2'>
@@ -50,7 +57,10 @@ export default function Preview({
             style={{ background: color }}
           ></div>
         ))}
-        <MaterialIcon name='format_color_fill' className='cursor-pointer ' />
+        <MaterialIcon
+          name='format_color_fill'
+          className={clsx("cursor-pointer ", `text-[${bgColor}]`)}
+        />
       </div>
     </div>
   );

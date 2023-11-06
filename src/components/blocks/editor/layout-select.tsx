@@ -1,8 +1,7 @@
 import clsx from "clsx";
+
 import { useOnboardingStore } from "@/store/onboardingStore";
-import MaterialIcon from "@/components/icons/material-icon";
 import { AVAILABLE_LAYOUT_CARDS } from "./layout-card";
-import { Component } from "react";
 
 const styles = {
   base: " w-1/2 overflow-y-scroll h-full ",
@@ -32,7 +31,8 @@ export default function LayoutSelect({
   selected,
   onSelect,
 }: LayoutSelectProps) {
-  const { selectedIcon, businessInfo, selectedFont } = useOnboardingStore();
+  const { selectedIcon, businessInfo, selectedFont, selectedColor } =
+    useOnboardingStore();
 
   return (
     <div className={clsx(styles.base, className)}>
@@ -51,6 +51,7 @@ export default function LayoutSelect({
               text={businessInfo.name.slice(0, 4)}
               className='border border-[#eaf0f6] gap-3'
               font={selectedFont}
+              color={selectedColor}
             />
           </div>
         ))}

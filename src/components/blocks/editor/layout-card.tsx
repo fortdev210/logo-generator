@@ -22,6 +22,11 @@ interface LayoutCardProps {
    * Font style
    */
   font: string;
+
+  /**
+   * Color selected
+   */
+  color: string;
 }
 
 const styles = {
@@ -33,11 +38,12 @@ export const HorizontalLayoutCard = ({
   icon,
   text,
   font,
+  color,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, className)}>
-      <MaterialIcon name={icon} size={50} />
-      <span className='text-xl' style={{ fontFamily: font }}>
+      <MaterialIcon name={icon} size={50} style={{ color: color }} />
+      <span className='text-xl' style={{ fontFamily: font, color: color }}>
         {text}
       </span>
     </div>
@@ -49,11 +55,12 @@ export const VerticalLayoutCard = ({
   icon,
   text,
   font,
+  color,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, " flex-col ", className)}>
-      <MaterialIcon name={icon} size={50} />
-      <span className='text-xl' style={{ fontFamily: font }}>
+      <MaterialIcon name={icon} size={50} style={{ color: color }} />
+      <span className='text-xl' style={{ fontFamily: font, color: color }}>
         {text}
       </span>
     </div>
@@ -65,13 +72,14 @@ export const RightTextLayoutCard = ({
   icon,
   text,
   font,
+  color,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, className)}>
-      <span className='text-xl' style={{ fontFamily: font }}>
+      <span className='text-xl' style={{ fontFamily: font, color: color }}>
         {text}
       </span>
-      <MaterialIcon name={icon} size={50} />
+      <MaterialIcon name={icon} size={50} style={{ color: color }} />
     </div>
   );
 };
@@ -81,10 +89,11 @@ export const TextOnlyCard = ({
   icon,
   text,
   font,
+  color,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, className)}>
-      <span className='text-xl' style={{ fontFamily: font }}>
+      <span className='text-xl' style={{ fontFamily: font, color: color }}>
         {text}
       </span>
     </div>
@@ -96,12 +105,16 @@ export const TextInCircleCard = ({
   icon,
   text,
   font,
+  color,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, " py-4 ", className)}>
-      <div className='h-full  aspect-square border-2 rounded-full items-center flex justify-center max-h-[200px] flex-col'>
-        <MaterialIcon name={icon} />
-        <span className='text-xl' style={{ fontFamily: font }}>
+      <div
+        className='h-full  aspect-square border-2 rounded-full items-center flex justify-center max-h-[200px] flex-col'
+        style={{ borderColor: color }}
+      >
+        <MaterialIcon name={icon} style={{ color: color }} />
+        <span className='text-xl' style={{ fontFamily: font, color: color }}>
           {text}
         </span>
       </div>
@@ -114,12 +127,16 @@ export const TextInSquareCard = ({
   icon,
   text,
   font,
+  color,
 }: LayoutCardProps) => {
   return (
     <div className={clsx(styles.base, " py-4 ", className)}>
-      <div className='h-full  aspect-square border-2 items-center flex justify-center max-h-[200px] flex-col '>
-        <MaterialIcon name={icon} />
-        <span className='text-xl' style={{ fontFamily: font }}>
+      <div
+        className='h-full  aspect-square border-2 items-center flex justify-center max-h-[200px] flex-col '
+        style={{ borderColor: color }}
+      >
+        <MaterialIcon name={icon} style={{ color: color }} />
+        <span className='text-xl' style={{ fontFamily: font, color: color }}>
           {text}
         </span>
       </div>

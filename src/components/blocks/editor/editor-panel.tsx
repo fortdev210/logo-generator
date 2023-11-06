@@ -10,7 +10,7 @@ import LayoutSelect from "./layout-select";
 import Preview from "./preview";
 import { AVALIABLE_COLORS } from "@/utils/contants";
 import { useOnboardingStore } from "@/store/onboardingStore";
-
+import { negateColor } from "@/utils/color-util";
 interface EditorPanelProps {
   /**
    * Classname
@@ -37,7 +37,14 @@ export default function EditorPanel({ className }: EditorPanelProps) {
     selectedLayout,
     addLayout,
     businessInfo,
+    selectedBgColor,
+    addBgColor,
   } = useOnboardingStore();
+
+  const onAddColor = (color: string) => {
+    addColor(color);
+    addBgColor(negateColor(color));
+  };
 
   return (
     <div className={clsx(styles.base, className)}>
@@ -89,7 +96,7 @@ export default function EditorPanel({ className }: EditorPanelProps) {
           <IconSelect selectedIcon={selectedIcon} onSelect={addIcon} />
         )}
         {editingItem === "color" && (
-          <ColorSelect selectedColor={selectedColor} onSelect={addColor} />
+          <ColorSelect selectedColor={selectedColor} onSelect={onAddColor} />
         )}
         {editingItem === "font" && (
           <FontSelect selectedFont={selectedFont} onSelect={addFont} />
@@ -104,6 +111,7 @@ export default function EditorPanel({ className }: EditorPanelProps) {
           font={selectedFont}
           color={selectedColor}
           text={businessInfo.name}
+          bgColor={selectedBgColor}
         />
       </div>
     </div>

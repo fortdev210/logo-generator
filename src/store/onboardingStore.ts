@@ -18,6 +18,7 @@ type OnboardingStateType = {
   selectedColor: string;
   selectedLogo: string;
   selectedLayout: string;
+  selectedBgColor: string;
   currentStep: number;
   stepsFinished: Record<number, boolean>;
 };
@@ -31,6 +32,7 @@ const OnboardingInitialState: OnboardingStateType = {
   selectedIcon: "",
   selectedFont: "",
   selectedColor: "",
+  selectedBgColor: "",
   selectedLogo: "",
   selectedLayout: "",
   currentStep: 0,
@@ -48,6 +50,7 @@ export const useOnboardingStore = create(
         addColor: (selectedColor: string) => set({ selectedColor }),
         addLogo: (selectedLogo: string) => set({ selectedLogo }),
         addLayout: (selectedLayout: string) => set({ selectedLayout }),
+        addBgColor: (selectedBgColor: string) => set({ selectedBgColor }),
         setCurrentStep: (currentStep: number) => set({ currentStep }),
         setStepsFinished: (step: ONBOARDING_STEP_ENUM, value: boolean) =>
           set({
