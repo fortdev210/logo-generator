@@ -12,11 +12,11 @@ export default function BussinessInfo() {
 
   return (
     <div className={styles.base}>
-      <div className='w-1/2 m-auto mt-[100px]'>
+      <div className='w-full p-10  md:w-1/2 m-auto mt-[100px]'>
         <Typography
           variant='h1'
           text='What Is Your Business About?'
-          className='mb-4'
+          className='mb-4 hidden md:block'
         />
         <Typography
           variant='body1'

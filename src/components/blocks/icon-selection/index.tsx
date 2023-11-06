@@ -10,24 +10,26 @@ import React, { useEffect, useState } from "react";
 import IconCard from "./icon-card";
 
 const styles = {
-  base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] p-4  md:pt-[100px] h-full md:h-auto ",
+  base: "w-full flex items-center justify-center flex-col bg-[#eaf0f6] p-10  md:pt-[100px]  ",
   title: "text-3xl font-semibold mb-4",
 };
 
 export default function IconSelection() {
   const [icons, setIcons] = useState<string[]>([]);
+  const [search, setSearch] = useState("");
 
-  const { selectedIcon, addIcon, setStepsFinished } = useOnboardingStore();
+  const { selectedIcon, addIcon, setStepsFinished, businessInfo } =
+    useOnboardingStore();
 
   useEffect(() => {
-    const res = getBusinessIcons("restaurants");
+    const res = getBusinessIcons(businessInfo.name);
     if (res) {
       setIcons(res);
     }
   }, []);
 
   const onLoadMore = () => {
-    const res = getBusinessIcons("restaurants");
+    const res = getBusinessIcons(businessInfo.name);
     if (res) {
       setIcons([...icons, ...res]);
     }
@@ -36,6 +38,13 @@ export default function IconSelection() {
   const onSelectIcon = (logo: string) => {
     addIcon(logo);
     setStepsFinished(ONBOARDING_STEP_ENUM.ICON, true);
+  };
+
+  const onSearch = (search: string) => {
+    const res = getBusinessIcons(search);
+    if (res) {
+      setIcons(res);
+    }
   };
 
   return (
@@ -55,7 +64,14 @@ export default function IconSelection() {
         </div>
         <Input
           placeholder='Search over icons'
-          iconR={<MaterialIcon name='search' size={24} />}
+          onChange={(e) => setSearch(e.target.value)}
+          iconR={
+            <MaterialIcon
+              name='search'
+              size={24}
+              onClick={() => onSearch(search)}
+            />
+          }
         />
       </div>
       <div className='w-full md:w-2/3 grid grid-cols-3 lg:grid-cols-4 gap-4 mt-10'>

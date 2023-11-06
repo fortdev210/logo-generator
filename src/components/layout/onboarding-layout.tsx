@@ -54,16 +54,20 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
           setStepsFinished(ONBOARDING_STEP_ENUM.COLOR, true);
           router.push("/logo-selection");
         }
+        break;
       case ONBOARDING_STEP_ENUM.LOGO:
         if (selectedLogo) {
+          setCurrentStep(ONBOARDING_STEP_ENUM.BRAND_KIT);
           setStepsFinished(ONBOARDING_STEP_ENUM.LOGO, true);
           router.push("/editor");
         }
+        break;
       case ONBOARDING_STEP_ENUM.BRAND_KIT:
         if (selectedLayout) {
           setStepsFinished(ONBOARDING_STEP_ENUM.BRAND_KIT, true);
           router.push("/final");
         }
+        break;
       default:
         break;
     }
@@ -90,6 +94,7 @@ export default function OnboardingLayout(props: OnboardingLayoutProps) {
       case ONBOARDING_STEP_ENUM.BRAND_KIT:
         setCurrentStep(ONBOARDING_STEP_ENUM.LOGO);
         router.push("/logo-selection");
+        break;
       default:
         break;
     }

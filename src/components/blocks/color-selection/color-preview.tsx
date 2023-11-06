@@ -44,7 +44,7 @@ export default function ColorPreview() {
           />
           <Typography
             variant='h1'
-            text={businessInfo.name}
+            text={businessInfo.name.slice(0, 4)}
             className='text-[70px]'
             style={{ color: selectedColor }}
           />

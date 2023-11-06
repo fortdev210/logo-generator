@@ -55,7 +55,7 @@ export default function Preview({
       >
         <selectedLayoutComponent.Component
           icon={icon}
-          text={text}
+          text={text.slice(0, 4)}
           font={font}
           color={color}
         />

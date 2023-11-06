@@ -22,7 +22,7 @@ export default function IconCard(props: IconCardProps) {
       onClick={() => onSelect(iconSrc)}
     >
       <input
-        className='absolute right-3 top-3 w-8 h-8 '
+        className='absolute right-3 top-3 w-4 h-4 md:w-8 md:h-8 '
         type='radio'
         checked={selected}
         readOnly

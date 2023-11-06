@@ -18,6 +18,7 @@ export default function LogoSelection() {
     selectedLogo,
     businessInfo,
     addLogo,
+    setCurrentStep,
   } = useOnboardingStore();
 
   const [loadingItems, setLoadingItems] = useState(16);
@@ -28,6 +29,7 @@ export default function LogoSelection() {
 
   const onSelectLogo = (logo: string) => {
     addLogo(logo);
+    setCurrentStep(ONBOARDING_STEP_ENUM.LOGO);
   };
 
   return (
@@ -49,7 +51,7 @@ export default function LogoSelection() {
               <LogoCard
                 selectedColor={selectedColor}
                 icon={selectedIcon}
-                text={businessInfo.name}
+                text={businessInfo.name.slice(0, 4)}
                 font={selectedFont}
                 key={index}
                 bgColor={color}
